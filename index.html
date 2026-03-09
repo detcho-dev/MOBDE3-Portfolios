@@ -11,21 +11,38 @@
 
     <div class="container">
         <header>
-            <h1>مرحباً بك في <span class="brand">مُبدِع</span></h1>
-            <p>اعرض أعمالك، ابنِ هويتك، وتواصل مع المبدعين العرب.</p>
+            <h1 class="animate-drop">مرحباً بك في <span class="brand">مُبدِع</span></h1>
+            <p>المنصة العربية الأولى لعرض إبداعات المطورين والمصممين.</p>
         </header>
 
-        <main class="login-section card">
-            <h2>تسجيل الدخول / إنشاء حساب</h2>
+        <section class="selection-section">
+            <h2 class="section-title">من أنت؟</h2>
+            <div class="selection-cards">
+                <div class="card selector-card creator-style" onclick="selectRole('creator')">
+                    <div class="icon">🎨</div>
+                    <h3>أنا مُبدِع</h3>
+                    <p>أريد بناء معرض أعمالي الخاص ومشاركته مع العالم.</p>
+                </div>
+
+                <div class="card selector-card viewer-style" onclick="selectRole('viewer')">
+                    <div class="icon">👁️</div>
+                    <h3>أنا مُشاهد</h3>
+                    <p>أريد استكشاف أعمال المبدعين والحصول على إلهام.</p>
+                </div>
+            </div>
+        </section>
+
+        <main class="login-section card" id="loginSection" style="display: none;">
+            <h2 id="loginTitle">تسجيل الدخول للمتابعة</h2>
             
             <div class="social-grid">
                 <button class="btn-social google" id="btnGoogle">
-                    <img src="google-logo-search-new-svgrepo-com.svg" alt="Google">
-                    جوجل
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+                    متابعة باستخدام Google
                 </button>
                 <button class="btn-social github" id="btnGithub">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
-                    جيت هاب
+                    متابعة باستخدام GitHub
                 </button>
             </div>
 
@@ -33,13 +50,27 @@
 
             <form id="passlessForm">
                 <div class="form-group">
-                    <input type="email" id="userEmail" placeholder="أدخل بريدك الإلكتروني" required>
+                    <input type="email" id="userEmail" placeholder="example@email.com" required>
                 </div>
                 <button type="submit" class="btn-main">أرسل رابط الدخول (Passless)</button>
             </form>
+            
+            <p class="status-msg" id="statusMsg"></p>
         </main>
     </div>
 
     <script type="module" src="app.js"></script>
+
+    <script>
+        // دالة بسيطة لتغيير العنوان بناءً على الاختيار
+        function updateLoginTitle(role) {
+            const title = document.getElementById('loginTitle');
+            if(role === 'creator') {
+                title.innerText = "أهلاً بك أيها المُبدع، سجل دخولك وابدأ النشر";
+            } else {
+                title.innerText = "أهلاً بك في عالم الإلهام، سجل دخولك للاستكشاف";
+            }
+        }
+    </script>
 </body>
 </html>
